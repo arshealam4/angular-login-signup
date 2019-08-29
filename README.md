@@ -7,8 +7,8 @@
 
 ## Quick Start
 
-* git clone https://github.com/arshealam4/angular-user-role-weather-app.git
-* cd angular-user-role-weather-app
+* git clone https://github.com/arshealam4/angular-login-signup.git
+* cd angular-login-signup
 * npm install
 * ng serve
 
