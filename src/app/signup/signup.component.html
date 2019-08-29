@@ -1,0 +1,51 @@
+<div class="container">
+  <h3>SIGN UP</h3>
+  <form [formGroup]="signUp" autocomplete="off" (ngSubmit)="register()">
+    <div class="form-group">
+        <input type="text" formControlName="userName" class="form-control" placeholder="userName">
+        <span *ngIf="signUp.controls['userName'].invalid && submitted"
+          class="col-sm-12 text-danger">Invalid user name</span>
+    </div>
+      <div class="form-group">
+          <input type="text" formControlName="email" class="form-control" placeholder="email">
+          <span *ngIf="signUp.controls['email'].invalid && submitted"
+          class="col-sm-12 text-danger">Invalid email</span>
+      </div>
+
+      <div class="form-group">
+          <select class="form-control" [formControl]="signUp.controls['gender']" formControlName="gender"
+                  name="gender">
+            <option [ngValue]="null">Select Gender</option>
+            <option *ngFor="let gender of genderList" [ngValue]="gender.name"> {{gender.name}}
+            </option>
+          </select>
+          <span *ngIf="signUp.controls['gender'].invalid && submitted"
+          class="col-sm-12 text-danger">Invalid gender</span>
+      </div>
+
+      <div class="form-group">
+        <input type="password" formControlName="password" class="form-control" placeholder="password">
+        <span *ngIf="signUp.controls['password'].invalid && submitted"
+        class="col-sm-12 text-danger">Invalid password</span>
+    </div>
+
+    <div class="form-group">
+      <input type="password" (ngModelChange) = "checkPassword()" formControlName="confirmPassword" class="form-control" placeholder="confirm password">
+      <span *ngIf="signUp.controls['confirmPassword'].invalid && submitted"
+      class="col-sm-12 text-danger">Invalid confirm password</span>
+      <span *ngIf="isMismatch"
+      class="col-sm-12 text-danger">password and confirm password should be match</span>
+  </div>
+
+    <button type="submit" class="glb-btn-pep btn btn-primary" [disabled]="isSubmit">signUp</button>
+</form>
+
+  <div *ngIf="isSuccess" class="alert alert-success">
+    <strong>SUCCESS!</strong> {{successMessage}}
+  </div>
+
+  <div *ngIf="isError" class="alert alert-danger">
+    <strong>ERROR!</strong> {{errorMessage}}
+  </div>
+
+</div>
