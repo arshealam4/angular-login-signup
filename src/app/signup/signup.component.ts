@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder }  from '@angular/forms';
 import { UsersService } from '../_services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +24,8 @@ export class SignupComponent implements OnInit {
   errorMessage = ''
 
   constructor(public formBuilder: FormBuilder,
-    private usersService: UsersService) { }
+    private usersService: UsersService,
+    private router:Router) { }
 
   ngOnInit() {
 
@@ -85,6 +87,10 @@ export class SignupComponent implements OnInit {
     } else {
       this.isMismatch = true;
     }
+  }
+
+  loginPage(){
+    this.router.navigate(['/login']) 
   }
 
 }

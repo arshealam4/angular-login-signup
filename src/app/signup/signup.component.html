@@ -37,7 +37,8 @@
       class="col-sm-12 text-danger">password and confirm password should be match</span>
   </div>
 
-    <button type="submit" class="glb-btn-pep btn btn-primary" [disabled]="isSubmit">signUp</button>
+    <button type="submit" class="glb-btn-pep btn btn-primary" [disabled]="isSubmit">SIGNUP</button>
+    <button type="button" class="btn btn-link" (click)="loginPage()">LOGIN</button>
 </form>
 
   <div *ngIf="isSuccess" class="alert alert-success">
