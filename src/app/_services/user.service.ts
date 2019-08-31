@@ -6,11 +6,8 @@ import {HttpClient} from '@angular/common/http';
 export class UsersService {
 
     private static registerUserURL = `${environment.apiURL}/users/signup`;
-    private static getAllUserURL = `${environment.apiURL}/users/list-user`;
-    private static getUserURL = `${environment.apiURL}/users/single-user`;
-    private static addUserURL = `${environment.apiURL}/users/add-user`;
-    private static updateUserURL = `${environment.apiURL}/users/update-user`;
-    private static deleteUserURL = `${environment.apiURL}/users/delete-user`;
+    private static loginUserURL = `${environment.apiURL}/users/login`;
+    private static getAllUserURL = `${environment.apiURL}/users/user-list`;
 
   constructor(private http: HttpClient) {
 
@@ -20,25 +17,12 @@ export class UsersService {
     return this.http.post<any>(UsersService.registerUserURL, user);
   }
 
+  loginUser(user) {
+    return this.http.post<any>(UsersService.loginUserURL, user);
+  }
+
   getUserList() {
     return this.http.get<any>(UsersService.getAllUserURL);
-  }
-
-  getUser(id: string) {
-    return this.http.get<any>(`${UsersService.getUserURL}/${id}`);
-  }
-
-  addUser(user) {
-    return this.http.post<any>(UsersService.addUserURL, user);
-  }
-
-  updateUser(user, id) {
-    user._id = id;
-    return this.http.put<any>(UsersService.updateUserURL, user);
-  }
-
-  deleteUser(id) {
-    return this.http.delete<any>(`${UsersService.deleteUserURL}/${id}`);
   }
 
 }
