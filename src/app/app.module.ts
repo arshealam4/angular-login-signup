@@ -9,8 +9,6 @@ import { UsersComponent } from './users/users.component';
 import {AuthGuard} from './_guards/auth.guard';
 
 import { UsersService } from './_services/user.service';
-import { RolesService } from './_services/role.service';
-import { WeatherService } from './_services/weather.service';
 import { CustomHttpInterceptorService } from './_services/CustomHttpInterceptorService.service';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -32,8 +30,6 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     UsersService,
-    RolesService,
-    WeatherService,
     {provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true},
     AuthGuard
   ],
